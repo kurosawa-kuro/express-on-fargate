@@ -7,9 +7,7 @@ docker run --rm -p 8080:8080 express-on-fargate:latest
 ECR(https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-northeast-1)で登録
 ```
 
-以下は、提供された情報を整理したものです。
 
----
 
 ### AWS Fargate 設定概要
 
@@ -46,3 +44,4 @@ ECR(https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-nor
   - **VPC**: デフォルト
   - **セキュリティグループ**: training-sg-2
 
+クラスター → サービス → タスク → 設定 → パブリック IP

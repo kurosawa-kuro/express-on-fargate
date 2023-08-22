@@ -9,7 +9,7 @@ ECR(https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-nor
 
 
 
-### AWS Fargate 設定概要
+### AWS Fargate ELB無し 設定概要
 
 **1. セキュリティグループ**
 - **名前**: training-sg-2

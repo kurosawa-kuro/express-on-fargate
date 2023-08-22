@@ -7,63 +7,42 @@ docker run --rm -p 8080:8080 express-on-fargate:latest
 ECR(https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-northeast-1)で登録
 ```
 
-セキュリティグループ作成
-ウェブアプリのポートを空ける
+以下は、提供された情報を整理したものです。
 
-ecsTaskExecutionRoleは新しいロールで自動的に作成される
-それにCloudWatchの権限を追加する
+---
 
-IAM
-ecsTaskExecutionRole
-ポリシーの追加
-CloudWatchFullAccess
-ポリシーのアタッチ
+### AWS Fargate 設定概要
 
-クラスター設定
-クラスター名
-training-cluster-2
+**1. セキュリティグループ**
+- **名前**: training-sg-2
+- **目的**: ウェブアプリのポートを解放
 
-VPC
-デフォルト
+**2. IAM設定**
+- **タスク実行ロール**: ecsTaskExecutionRole
+  - **新規作成**: はい
+  - **追加のポリシー**: CloudWatchFullAccess
 
-タスク定義
-タスク定義の設定
-タスク定義ファミリー
-training-task-2
+**3. Fargate クラスター設定**
+- **クラスター名**: training-cluster-2
+- **VPC**: デフォルト
 
-- 条件付きのタスクロール
-タスク実行ロール
-ecsTaskExecutionRole
-タスクロール
-ecsTaskExecutionRole
+**4. タスク定義**
+- **タスク定義ファミリー**: training-task-2
+- **タスクロール**: ecsTaskExecutionRole
+- **タスク実行ロール**: ecsTaskExecutionRole
 
+**5. コンテナ設定**
+- **コンテナ数**: 1
+- **コンテナ詳細**:
+  - **名前**: training-container-2
+  - **イメージ URI**: 603713107417.dkr.ecr.ap-northeast-1.amazonaws.com/express-on-fargate
+  - **ポートマッピング**: 8080 (TCP)
 
-コンテナ - 1
-コンテナの詳細
-名前
-training-container-2
-イメージ URI
-603713107417.dkr.ecr.ap-northeast-1.amazonaws.com/express-on-fargate
-他のポートマッピングの追加
-8080
-TCP
-
-サービスの作成
-既存のクラスター
-training-cluster-2
-コンピューティング設定 ((アドバンスト))
-コンピューティングオプション
-起動タイプ
-Fargate
-
-デプロイ設定
-サービス
-training-service-2
-
-ネットワーキング
-VPC
-デフォルト
-
-セキュリティグループ
-training-sg-2
+**6. サービス設定**
+- **サービス名**: training-service-2
+- **クラスター**: training-cluster-2
+- **起動タイプ**: Fargate
+- **ネットワーキング**:
+  - **VPC**: デフォルト
+  - **セキュリティグループ**: training-sg-2
 

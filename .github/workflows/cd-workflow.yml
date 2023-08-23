@@ -45,4 +45,4 @@ jobs:
 
       - name: Deploy to ECS
         run: |
-          aws ecs update-service --service $ECS_SERVICE --cluster ecs-lesson-cluster --force-new-deployment
+          aws ecs update-service --service $ECS_SERVICE --cluster training-cluster-3 --force-new-deployment

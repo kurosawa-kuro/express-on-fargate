@@ -1,0 +1,20 @@
+name: CI flow for Amazon ECS
+
+on: [push]
+
+env:
+  SLACK_WEBHOOK: https://xxxxxxxx ##change this URL!!
+
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Unit Test
+      run: cd ${{ github.workspace }}
+    - run: npm install && npm run test

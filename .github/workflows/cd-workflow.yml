@@ -9,7 +9,7 @@ on:
 env:
   AWS_REGION: ap-northeast-1
   ECS_SERVICE: training-service-2
-  CONTAINER_NAME: training-container-2
+  CONTAINER_NAME: express-on-fargate
   WEBAPP_TAG: 1.0.0
 
 jobs:
